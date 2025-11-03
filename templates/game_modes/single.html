@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container game-container">
+    <h2>{{ caca_pixo.titulo }} - Modo Único</h2>
+    
+    <div class="game-content">
+        <div class="image-container">
+            <img src="{{ caca_pixo.imagem_url }}" alt="CaçaPixo">
+        </div>
+        
+        <div class="game-interface">
+            <div class="input-group">
+                <input type="text" id="resposta" placeholder="Digite sua resposta...">
+                <button id="enviar-resposta" class="btn btn-primary">Enviar</button>
+            </div>
+            
+            <div id="feedback" class="feedback"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const gameMode = 'single';
+</script>
+{% endblock %}

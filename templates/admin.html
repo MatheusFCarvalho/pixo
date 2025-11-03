@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Administração - CaçaPixos</h2>
+    
+    <a href="{{ url_for('create') }}" class="btn btn-success">Criar Novo CaçaPixo</a>
+    
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Modo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for caca_pixo in caca_pixos %}
+            <tr>
+                <td>{{ caca_pixo.titulo }}</td>
+                <td>{{ 'Único' if caca_pixo.modo == 'single' else 'Múltiplo' if caca_pixo.modo == 'multiple' else 'Texto' }}</td>
+                <td>
+                    <a href="{{ url_for('play', id=caca_pixo.id) }}" class="btn btn-small">Jogar</a>
+                    <a href="{{ url_for('edit', id=caca_pixo.id) }}" class="btn btn-small btn-warning">Editar</a>
+                    <a href="{{ url_for('delete', id=caca_pixo.id) }}" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza?')">Excluir</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">Nenhum CaçaPixo cadastrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

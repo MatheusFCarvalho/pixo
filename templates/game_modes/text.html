@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container game-container">
+    <h2>{{ caca_pixo.titulo }} - Modo Texto</h2>
+    
+    <div class="game-content">
+        <div class="image-container">
+            <img src="{{ caca_pixo.imagem_url }}" alt="CaçaPixo">
+        </div>
+        
+        <div class="game-interface">
+            <div class="text-display">
+                <h3>Texto Oculto:</h3>
+                <div id="revealed-text" class="revealed-text">{{ session.revealed_text if session.revealed_text else '_' * caca_pixo.texto_oculto|length }}</div>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="resposta" placeholder="Digite uma palavra...">
+                <button id="enviar-resposta" class="btn btn-primary">Enviar</button>
+            </div>
+            
+            <div id="feedback" class="feedback"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const gameMode = 'text';
+</script>
+{% endblock %}

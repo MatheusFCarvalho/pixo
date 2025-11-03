@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container game-container">
+    <h2>{{ caca_pixo.titulo }} - Modo Múltiplo</h2>
+    
+    <div class="game-content">
+        <div class="image-container">
+            <img src="{{ caca_pixo.imagem_url }}" alt="CaçaPixo">
+        </div>
+        
+        <div class="game-interface">
+            <div class="progress">
+                <span id="progress-text">Encontradas: <span id="found-count">0</span> de <span id="total-count">0</span></span>
+            </div>
+            
+            <div class="found-words" id="found-words-container">
+                <h3>Palavras Encontradas:</h3>
+                <div id="found-words-list"></div>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="resposta" placeholder="Digite uma palavra...">
+                <button id="enviar-resposta" class="btn btn-primary">Enviar</button>
+            </div>
+            
+            <div id="feedback" class="feedback"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const gameMode = 'multiple';
+    const totalWords = {{ caca_pixo.palavras_multiplas|length if caca_pixo.palavras_multiplas else 0 }};
+</script>
+{% endblock %}
